@@ -42,8 +42,6 @@ def move_handle(build_ele, handle_prop, input_pnt, doc):
 
 
 def modify_element_property(build_ele, name, value):
-    # Handle dependencies for changed property
-    # Return true/false for palette refresh
     if (name == "BeamHeight"):
         change = value - build_ele.TopShHeight.value - build_ele.RibHeight.value - build_ele.BotShUpHeight.value - build_ele.BotShLowHeight.value
         print(change)
@@ -206,15 +204,17 @@ class CreateBeamForBridge():
 
         # Створення ребра
         rib = AllplanGeo.BRep3D.CreateCuboid(
-            AllplanGeo.AxisPlacement3D(AllplanGeo.Point3D(0., 0., self._bot_sh_height), AllplanGeo.Vector3D(1, 0, 0),
-                                       AllplanGeo.Vector3D(0, 0, 1)), self._beam_width, self._beam_length,
-            self._rib_height)
+            AllplanGeo.AxisPlacement3D(AllplanGeo.Point3D(0., 0., self._bot_sh_height),
+            AllplanGeo.Vector3D(1, 0, 0),
+            AllplanGeo.Vector3D(0, 0, 1)), self._beam_width, self._beam_length,
+            self._rib_height
+        )
 
         err, beam = AllplanGeo.MakeUnion(beam, rib)
         if not GeometryValidate.polyhedron(err):
             return
 
-        # left and right notches
+        # Створення бокових виямок
         left_notch_pol = AllplanGeo.Polygon2D()
         left_notch_pol += AllplanGeo.Point2D((self._beam_width - self._rib_thickness) / 2., self._beam_height - self._top_sh_height)
         left_notch_pol += AllplanGeo.Point2D((self._beam_width - self._rib_thickness) / 2., self._bot_sh_height)
@@ -273,8 +273,6 @@ class CreateBeamForBridge():
         err, beam = AllplanGeo.MakeSubtraction(beam, beam_holes)
         if not GeometryValidate.polyhedron(err):
             return
-
-        # result beam
 
         self.model_ele_list.append(AllplanBasisElements.ModelElement3D(com_prop, beam))
 
