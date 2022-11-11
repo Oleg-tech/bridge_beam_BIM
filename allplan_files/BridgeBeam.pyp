@@ -2,7 +2,7 @@
 <Element>
     <Script>
         <Name>BasisExamples\BridgeBeam.py</Name>
-        <Title>CreateBridgeBeam</Title>
+        <Title>CreateBeamForBridge</Title>
         <Version>1.0</Version>
     </Script>
 
@@ -113,22 +113,22 @@
             <ValueType>Separator</ValueType>
         </Parameter>
         <Parameter>
-                <Name>RotationAngleX</Name>
-                <Text>Поворот відносно осі X</Text>
-                <Value>0</Value>
-                <ValueType>Angle</ValueType>
+             <Name>RotationAngleX</Name>
+             <Text>Поворот відносно осі X</Text>
+             <Value>0</Value>
+             <ValueType>Angle</ValueType>
         </Parameter>
-            <Parameter>
-                <Name>RotationAngleY</Name>
-                <Text>Поворот відносно осі Y</Text>
-                <Value>0</Value>
-                <ValueType>Angle</ValueType>
-            </Parameter>
-            <Parameter>
-		<Name>RotationAngleZ</Name>
-                <Text>Поворот відносно осі Z</Text>
-                <Value>0</Value>
-                <ValueType>Angle</ValueType>
-            </Parameter>
+        <Parameter>
+             <Name>RotationAngleY</Name>
+             <Text>Поворот відносно осі Y</Text>
+             <Value>0</Value>
+             <ValueType>Angle</ValueType>
+        </Parameter>
+        <Parameter>
+	     <Name>RotationAngleZ</Name>
+             <Text>Поворот відносно осі Z</Text>
+             <Value>50</Value>
+             <ValueType>Angle</ValueType>
+        </Parameter>
     </Page>    
 </Element>
